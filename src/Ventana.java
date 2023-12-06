@@ -68,9 +68,9 @@ public class Ventana extends JFrame {
             e.printStackTrace();
         }
         setTitle("Proyecto Final");
-        setSize(1200,900);
+        setSize(1200,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         createComponents();
         createListeners();
         setVisible(true);
@@ -217,7 +217,13 @@ public class Ventana extends JFrame {
         leftPanel.add(arrayUnsortedPanel, BorderLayout.NORTH);
         leftPanel.add(arraySortedPanel, BorderLayout.CENTER);
         leftPanel.add(buttonsPannel, BorderLayout.SOUTH);
-        add(leftPanel, BorderLayout.CENTER);
+        JScrollPane scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JPanel container=new JPanel();
+        container.setLayout(new BorderLayout());
+        scroll.setViewportView(container);
+
+        container.add(leftPanel, BorderLayout.CENTER);
+        add(scroll);
     }
 
 
