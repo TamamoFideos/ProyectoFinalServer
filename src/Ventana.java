@@ -68,7 +68,7 @@ public class Ventana extends JFrame {
             e.printStackTrace();
         }
         setTitle("Proyecto Final");
-        setSize(1200,500);
+        setSize(1200,700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setLayout(new BorderLayout());
         createComponents();
@@ -172,14 +172,11 @@ public class Ventana extends JFrame {
         deleteOriginalArrayButton = new JButton("Eliminar arreglo");
         leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.setPreferredSize(new Dimension(getWidth()-200,getHeight()));
-        originalArrayTextArea = new JTextArea();
-        originalArrayTextArea.setPreferredSize(new Dimension(leftPanel.getWidth(), 200));
-        originalArrayTextArea.setMaximumSize(new Dimension(leftPanel.getWidth(), 450));
-        originalArrayTextArea.setLineWrap(true);
+        //leftPanel.setPreferredSize(new Dimension(getWidth()-200,getHeight()));
+
         sorterdArrayTextArea = new JTextArea();
         sorterdArrayTextArea.setPreferredSize(new Dimension(leftPanel.getWidth(), 200));
-        sorterdArrayTextArea.setMaximumSize(new Dimension(leftPanel.getWidth(), 450));
+        sorterdArrayTextArea.setMaximumSize(new Dimension(leftPanel.getWidth(), 200));
 
         sorterdArrayTextArea.setLineWrap(true);
 
@@ -214,16 +211,17 @@ public class Ventana extends JFrame {
         buttonsPannel.add(forkJoinButton);
         buttonsPannel.add(executorButton);
 
-        leftPanel.add(arrayUnsortedPanel, BorderLayout.NORTH);
-        leftPanel.add(arraySortedPanel, BorderLayout.CENTER);
-        leftPanel.add(buttonsPannel, BorderLayout.SOUTH);
-        JScrollPane scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        JPanel container=new JPanel();
-        container.setLayout(new BorderLayout());
-        scroll.setViewportView(container);
+        leftPanel.add(arrayUnsortedPanel);
+        //leftPanel.add(originalArrayTextArea); // Añadir JTextArea directamente
+        leftPanel.add(arraySortedPanel);
+        //leftPanel.add(sorterdArrayTextArea); // Añadir JTextArea directamente
+        leftPanel.add(buttonsPannel);
 
-        container.add(leftPanel, BorderLayout.CENTER);
-        add(scroll);
+        JScrollPane scrollPane = new JScrollPane(leftPanel,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setMinimumSize(new Dimension(1200, 700));
+        add(scrollPane);
     }
 
 
